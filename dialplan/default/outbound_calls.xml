@@ -1,0 +1,21 @@
+<include>
+
+  <extension name="local.example.com">
+    <condition field="${toll_allow}" expression="local"/>
+    <condition field="destination_number" expression="^([2-9]\d{6})$">
+      <action application="set" data="effective_caller_id_number=${outbound_caller_id_number}"/>
+      <action application="set" data="effective_caller_id_name=${outbound_caller_id_name}"/>
+      <action application="bridge" data="sofia/gateway/SipPROLA/+1${default_areacode}$1"/>
+    </condition>
+  </extension>
+
+  <extension name="domestic.example.com">
+    <condition field="${toll_allow}" expression="domestic"/>
+    <condition field="destination_number" expression="^1?([2-9]\d{2}[2-9]\d{6})$">
+      <action application="set" data="effective_caller_id_number=${outbound_caller_id_number}"/>
+      <action application="set" data="effective_caller_id_name=${outbound_caller_id_name}"/>
+      <action application="bridge" data="sofia/gateway/SipPROLA/+1$1"/>
+    </condition>
+  </extension>
+
+</include>

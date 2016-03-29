@@ -1,0 +1,9 @@
+<include>
+   <gateway name="SipPROLA">
+     <param name="proxy" value="sbc01.la.ytel.com"/>
+     <param name="register" value="false"/>
+     <param name="caller-id-in-from" value="true"/> <!--Most gateways seem to want this-->
+     <param name="username" value="not-used"/>
+     <param name="password" value="not-used"/>
+   </gateway>
+</include>
